@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Shield, Bug, Mail, Phone, Send, CheckCircle2, ArrowRight, Target, Users, GlobeLock, MousePointerClick, Terminal, LockKeyhole } from 'lucide-react'
+import { Shield, Bug, Mail, Phone, Send, CheckCircle2, ArrowRight, Target, Users, GlobeLock, MousePointerClick, Terminal, LockKeyhole, Award, Trophy } from 'lucide-react'
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
 
@@ -14,6 +14,7 @@ function Nav() {
           <span className="text-white font-semibold tracking-wide">BorneoSec<span className="text-emerald-400">.id</span></span>
         </div>
         <nav className="hidden md:flex items-center gap-6 text-sm text-white/80">
+          <a href="#about" className="hover:text-white">Tentang</a>
           <a href="#services" className="hover:text-white">Layanan</a>
           <a href="#usecases" className="hover:text-white">Use Case</a>
           <a href="#process" className="hover:text-white">Proses</a>
@@ -37,15 +38,21 @@ function Hero() {
       <div className="max-w-6xl mx-auto px-4 pt-28 md:pt-40 pb-16 md:pb-28">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>
-            <p className="inline-flex items-center gap-2 text-emerald-300/90 text-xs tracking-widest uppercase mb-4 bg-white/5 px-3 py-1 rounded-full border border-white/10">
-              Top Rated Hackers dari Kalimantan
-              <CheckCircle2 className="h-4 w-4" />
-            </p>
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+              <p className="inline-flex items-center gap-2 text-emerald-300/90 text-xs tracking-widest uppercase bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                Top Rated Hackers dari Kalimantan
+                <CheckCircle2 className="h-4 w-4" />
+              </p>
+              <p className="inline-flex items-center gap-2 text-cyan-300/90 text-xs tracking-widest uppercase bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                Top 10 Google Bug Hunter (Indonesia)
+                <Trophy className="h-4 w-4" />
+              </p>
+            </div>
             <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
               Uji Keamanan Sistem Anda dengan Tim Red Team BorneoSec
             </h1>
             <p className="mt-5 text-white/70 text-lg">
-              Kami spesialis di Penetration Testing, Phishing Simulation, dan Red Teaming. Temukan celah sebelum penyerang melakukannya.
+              Kami berdiri sejak 2019 dari komunitas keamanan siber dan berkembang menjadi tim yang diperhitungkan secara nasional. Spesialis Penetration Testing, Phishing Simulation, dan Red Teaming.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#contact" className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-5 py-3 rounded-md transition-colors">
@@ -96,6 +103,57 @@ function Hero() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function About() {
+  const highlights = [
+    {
+      icon: <Shield className="h-5 w-5 text-emerald-400" />,
+      title: 'Berdiri dari Komunitas (2019)',
+      desc: 'Bermula sebagai komunitas security di Kalimantan, kami fokus berbagi ilmu, CTF, dan riset kerentanan hingga terbentuknya tim profesional.'
+    },
+    {
+      icon: <Trophy className="h-5 w-5 text-cyan-400" />,
+      title: 'Top 10 Google Bug Hunter (Indonesia)',
+      desc: 'Konsistensi dalam responsible disclosure dan perburuan bug pada ekosistem Google menempatkan anggota kami di jajaran Top 10 nasional.'
+    },
+    {
+      icon: <Award className="h-5 w-5 text-pink-400" />,
+      title: 'Hacker yang Diperhitungkan',
+      desc: 'Dikenal akan metodologi yang rapi, bukti eksploitasi yang kuat, dan rekomendasi yang dapat ditindaklanjuti oleh tim engineering.'
+    }
+  ]
+
+  return (
+    <section id="about" className="bg-black py-20 border-t border-white/10">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">Tentang BorneoSec</h2>
+            <p className="text-white/70 mt-4">
+              BorneoSec lahir pada 2019 dari semangat komunitas. Kini kami tumbuh menjadi tim red team dan penetration tester yang dipercaya berbagai perusahaan
+              di Indonesia. Visi kami sederhana: membantu organisasi memperkuat ketahanan siber dengan pendekatan yang praktis dan berorientasi hasil.
+            </p>
+            <p className="text-white/70 mt-3">
+              Reputasi kami dibangun dari karya: laporan yang jelas, PoC yang meyakinkan, serta pendampingan perbaikan hingga tuntas. Itulah mengapa kami kerap disebut
+              sebagai salah satu hacker yang diperhitungkan di Indonesia.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {highlights.map((h, i) => (
+              <div key={i} className="rounded-xl bg-white/5 border border-white/10 p-4">
+                <div className="flex items-center gap-2 text-white">
+                  {h.icon}
+                  <span className="font-medium text-sm">{h.title}</span>
+                </div>
+                <p className="text-white/70 text-sm mt-2">{h.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -346,6 +404,7 @@ function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-white/60 text-sm">© {new Date().getFullYear()} BorneoSec.id — Secure by Design.</p>
         <div className="flex items-center gap-4 text-white/60 text-sm">
+          <a href="#about" className="hover:text-white">Tentang</a>
           <a href="#services" className="hover:text-white">Layanan</a>
           <a href="#usecases" className="hover:text-white">Use Case</a>
           <a href="#process" className="hover:text-white">Proses</a>
@@ -361,6 +420,7 @@ function App() {
     <div className="min-h-screen bg-black">
       <Nav />
       <Hero />
+      <About />
       <Services />
       <UseCases />
       <Process />
